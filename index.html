@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Discount Liquor &amp; Wine | Columbia, KY</title>
-<meta name="version" content="4">
+<meta name="version" content="5">
 <meta name="description" content="Discount Liquor & Wine, 821 Jamestown St, Columbia, KY 42728. In the Columbia Shopping Center next to Fiesta Mexico and Family Dollar. Call (270) 380-1008. Adults 21+.">
 <meta name="theme-color" content="#121315">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -406,7 +406,7 @@ footer .mini-logo{font-size:28px;display:block;margin-bottom:10px}
 <script>
 const player=document.getElementById('player'),pbtn=document.getElementById('pbtn'),plabel=document.getElementById('plabel');
 const PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
-const au=new Audio('assets/jingle.mp3');
+const au=new Audio('assets/jingle.mp3?v=5');
 au.loop=true;
 au.preload='auto';
 const sync=()=>{const on=!au.paused&&!au.ended;player.classList.toggle('playing',on);pbtn.innerHTML=on?PAUSE:PLAY;plabel.textContent=on?'Now playing':'Play music'};
