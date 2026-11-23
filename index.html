@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Discount Liquor &amp; Wine | Columbia, KY</title>
-<meta name="version" content="3">
+<meta name="version" content="4">
 <meta name="description" content="Discount Liquor & Wine, 821 Jamestown St, Columbia, KY 42728. In the Columbia Shopping Center next to Fiesta Mexico and Family Dollar. Call (270) 380-1008. Adults 21+.">
 <meta name="theme-color" content="#121315">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -399,11 +399,25 @@ footer .mini-logo{font-size:28px;display:block;margin-bottom:10px}
   </div>
 </footer>
 
+<div class="player" id="player" role="button" aria-label="Play or pause music"><div class="pbtn" id="pbtn"></div><div class="eq"><i></i><i></i><i></i><i></i></div><span id="plabel">Play music</span></div>
+
 <a class="fab" href="tel:+12703801008">📞 Call Us</a>
 
 <script>
-function enter(){document.getElementById('gate').style.display='none';try{sessionStorage.setItem('dlw21','1')}catch(e){}}
-try{if(sessionStorage.getItem('dlw21')){document.getElementById('gate').style.display='none'}}catch(e){}
+const player=document.getElementById('player'),pbtn=document.getElementById('pbtn'),plabel=document.getElementById('plabel');
+const PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
+const au=new Audio('assets/jingle.mp3');
+au.loop=true;
+au.preload='auto';
+const sync=()=>{const on=!au.paused&&!au.ended;player.classList.toggle('playing',on);pbtn.innerHTML=on?PAUSE:PLAY;plabel.textContent=on?'Now playing':'Play music'};
+pbtn.innerHTML=PLAY;
+au.addEventListener('play',sync);
+au.addEventListener('pause',sync);
+au.addEventListener('ended',sync);
+player.addEventListener('click',()=>{player.classList.remove('nudge');if(au.paused)au.play().then(sync).catch(()=>player.classList.add('nudge'));else au.pause()});
+function revealPlayer(){player.classList.add('on');sync()}
+function enter(){document.getElementById('gate').style.display='none';try{sessionStorage.setItem('dlw21','1')}catch(e){}revealPlayer()}
+try{if(sessionStorage.getItem('dlw21')){document.getElementById('gate').style.display='none';revealPlayer()}}catch(e){}
 
 (function hours(){
   const sched={0:[13*60,21*60,'1 PM','9 PM','Sunday'],1:[9*60,21*60,'9 AM','9 PM','Monday'],2:[9*60,21*60,'9 AM','9 PM','Tuesday'],3:[9*60,21*60,'9 AM','9 PM','Wednesday'],4:[9*60,21*60,'9 AM','9 PM','Thursday'],5:[9*60,22*60,'9 AM','10 PM','Friday'],6:[9*60,22*60,'9 AM','10 PM','Saturday']};

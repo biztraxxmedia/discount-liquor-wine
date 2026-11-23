@@ -1,5 +1,11 @@
 qa/
 SOURCE.txt
 backup-v1.html
-assets/
 backup-v2.html
+backup-v3.html
+assets/*
+!assets/jingle.mp3
+audio/
+ff.log
+lyrics.txt
+raw.wav
